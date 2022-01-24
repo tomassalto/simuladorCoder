@@ -29,81 +29,63 @@ function mostrarPrecios(menuOpciones){
    }else if(menuOpciones == 7){
 
       precio = "El precio de GEFORCE NVIDIA 3080TI es de: 410.000 ARS";
-
-   }else{
-
-      precio = "Ingrese una opcion correcta!";
    }
-
+   
    return precio;
    
 }
 
-function mostrarMenu(numero){
+function mostrarMenu(pregunta){
 
    do{ 
-            
-      if(numero >= 1 && numero <= 7){
+
+      window.alert("MENU DE PLACAS DE VIDEO:"+"\n"+"\n"+
+         "1. GEFORCE NVIDIA 2060"+"\n"+
+         "2. GEFORCE NVIDIA 3060"+"\n"+
+         "3. GEFORCE NVIDIA 3060TI"+"\n"+
+         "4. GEFORCE NVIDIA 3070"+"\n"+
+         "5. GEFORCE NVIDIA 3070TI"+"\n"+
+         "6. GEFORCE NVIDIA 3080"+"\n"+
+         "7. GEFORCE NVIDIA 3080TI");
       
-      console.log(mostrarPrecios(numero));
-               
-      }if(numero >= 1 && numero <=7){
+      pregunta = prompt("Desea ingresar una opcion?: (si/no)");
 
-         pregunta = prompt("Desea ver otra vez el menú? (si/no)");
+      if(pregunta == "si"){
 
-         if(pregunta == "si"){
-
-            window.alert("MENU DE PLACAS DE VIDEO:"+"\n"+"\n"+
-            "1. GEFORCE NVIDIA 2060"+"\n"+
-            "2. GEFORCE NVIDIA 3060"+"\n"+
-            "3. GEFORCE NVIDIA 3060TI"+"\n"+
-            "4. GEFORCE NVIDIA 3070"+"\n"+
-            "5. GEFORCE NVIDIA 3070TI"+"\n"+
-            "6. GEFORCE NVIDIA 3080"+"\n"+
-            "7. GEFORCE NVIDIA 3080TI");
-
-            numero = prompt("Ingrese una opcion: ");
-
-         }else{
-            window.alert("Adios!");
-            break;
+         numero = prompt("Ingrese una opcion: ");  
+         
+         if(numero >= 1 && numero <= 7){
+      
+            console.log(mostrarPrecios(numero));
+                     
          }
+            if(numero >= 1 && numero <=7){
 
+               pregunta = prompt("Desea ver otra vez el menú? (si/no)");               
+               
+            }else{
+
+               window.alert("Ingrese una opcion correcta!");
+               numero = prompt("Ingrese una opcion: ");
+                              
+            }                    
+       
       }else{
-
-         window.alert("Ingrese una opcion correcta!");
-      }      
-      
-   }while(numero >= 1 && numero <= 7); 
-
-}
+         window.alert("Adios!");
+         break;
+      } 
+   }while(pregunta == "si");
+}   
 
 opcion = prompt("Desea ver el menu de compras? (si/no): ");
 
 if(opcion == "si"){
 
-   window.alert("MENU DE PLACAS DE VIDEO:"+"\n"+"\n"+
-      "1. GEFORCE NVIDIA 2060"+"\n"+
-      "2. GEFORCE NVIDIA 3060"+"\n"+
-      "3. GEFORCE NVIDIA 3060TI"+"\n"+
-      "4. GEFORCE NVIDIA 3070"+"\n"+
-      "5. GEFORCE NVIDIA 3070TI"+"\n"+
-      "6. GEFORCE NVIDIA 3080"+"\n"+
-      "7. GEFORCE NVIDIA 3080TI");
-
-  opcionDelMenu = prompt("Ingrese una opcion: ");
-  
-  if(opcionDelMenu >= 1 && opcionDelMenu <=7){
-
-   console.log(mostrarMenu(opcionDelMenu));
-
-  }else{
-
-     window.alert("Ingrese una opcion correcta!");
-  }
-       
+   console.log(mostrarMenu(opcion));
+   
+         
 }else{
-   console.log("Vuelva a intentarlo!");
+   window.alert("Adios!");
+   
 }
-
 

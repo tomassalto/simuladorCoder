@@ -42,34 +42,41 @@ function mostrarPrecios(menuOpciones){
 function mostrarMenu(numero){
 
    do{ 
-      
-      window.alert("MENU DE PLACAS DE VIDEO:"+"\n"+"\n"+
-      "1. GEFORCE NVIDIA 2060"+"\n"+
-      "2. GEFORCE NVIDIA 3060"+"\n"+
-      "3. GEFORCE NVIDIA 3060TI"+"\n"+
-      "4. GEFORCE NVIDIA 3070"+"\n"+
-      "5. GEFORCE NVIDIA 3070TI"+"\n"+
-      "6. GEFORCE NVIDIA 3080"+"\n"+
-      "7. GEFORCE NVIDIA 3080TI");
-           
-      
+            
       if(numero >= 1 && numero <= 7){
-         
-         console.log(mostrarPrecios(numero));
-         
+      
+      console.log(mostrarPrecios(numero));
+               
+      }if(numero >= 1 && numero <=7){
+
+         pregunta = prompt("Desea ver otra vez el menú? (si/no)");
+
+         if(pregunta == "si"){
+
+            window.alert("MENU DE PLACAS DE VIDEO:"+"\n"+"\n"+
+            "1. GEFORCE NVIDIA 2060"+"\n"+
+            "2. GEFORCE NVIDIA 3060"+"\n"+
+            "3. GEFORCE NVIDIA 3060TI"+"\n"+
+            "4. GEFORCE NVIDIA 3070"+"\n"+
+            "5. GEFORCE NVIDIA 3070TI"+"\n"+
+            "6. GEFORCE NVIDIA 3080"+"\n"+
+            "7. GEFORCE NVIDIA 3080TI");
+
+            numero = prompt("Ingrese una opcion: ");
+
+         }else{
+            window.alert("Adios!");
+            break;
+         }
+
       }else{
 
-         console.log("Ingrese una opcion correcta!");
-      }
-
-      numero = prompt("Ingrese una opcion: ");
+         window.alert("Ingrese una opcion correcta!");
+      }      
       
-   }while(numero >= 1 && numero <=7); 
+   }while(numero >= 1 && numero <= 7); 
 
 }
-
-
-
 
 opcion = prompt("Desea ver el menu de compras? (si/no): ");
 
@@ -84,14 +91,19 @@ if(opcion == "si"){
       "6. GEFORCE NVIDIA 3080"+"\n"+
       "7. GEFORCE NVIDIA 3080TI");
 
-  opcionDelMenu = prompt("Ingrese una opcion: "); 
-  console.log(mostrarMenu(opcionDelMenu));
-     
+  opcionDelMenu = prompt("Ingrese una opcion: ");
+  
+  if(opcionDelMenu >= 1 && opcionDelMenu <=7){
+
+   console.log(mostrarMenu(opcionDelMenu));
+
+  }else{
+
+     window.alert("Ingrese una opcion correcta!");
+  }
+       
 }else{
    console.log("Vuelva a intentarlo!");
 }
-
-
-
 
 

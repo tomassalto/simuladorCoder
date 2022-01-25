@@ -35,7 +35,7 @@ function mostrarPrecios(menuOpciones){
    
 }
 
-function mostrarMenu(pregunta){
+function mostrarMenu(numero){
 
    do{ 
 
@@ -48,33 +48,32 @@ function mostrarMenu(pregunta){
          "6. GEFORCE NVIDIA 3080"+"\n"+
          "7. GEFORCE NVIDIA 3080TI");
       
-      pregunta = prompt("Desea ingresar una opcion?: (si/no)");
+      opcion = prompt("Desea ingresar una opcion?: (si/no)");
 
-      if(pregunta == "si"){
+      if(opcion == "si"){
 
-         numero = prompt("Ingrese una opcion: ");  
+         numero = prompt("Ingrese el numero correspondiente para ver su precio: ");  
          
          if(numero >= 1 && numero <= 7){
       
             console.log(mostrarPrecios(numero));
                      
          }
-            if(numero >= 1 && numero <=7){
+         if(numero >= 1 && numero <=7){
 
-               pregunta = prompt("Desea ver otra vez el menú? (si/no)");               
+            opcion = prompt("Desea ver otra vez el menú? (si/no)");               
                
-            }else{
+         }else{
 
-               window.alert("Ingrese una opcion correcta!");
-               numero = prompt("Ingrese una opcion: ");
+            window.alert("Ingrese una opcion correcta!");
+            numero = prompt("Ingrese una opcion: ");
                               
-            }                    
+         }                    
        
       }else{
          window.alert("Adios!");
-         break;
-      } 
-   }while(pregunta == "si");
+      }
+   }while(numero >= 1 && numero <= 7);
 }   
 
 opcion = prompt("Desea ver el menu de compras? (si/no): ");

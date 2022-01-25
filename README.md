@@ -1,2 +1,2 @@
 # simuladorCoder
- venta de placas de videos
+Ejercicio de simulador coderhouse. Venta de placas de videos

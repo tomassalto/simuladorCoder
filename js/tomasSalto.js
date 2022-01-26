@@ -48,7 +48,7 @@ function mostrarMenu(numero){
          "6. GEFORCE NVIDIA 3080"+"\n"+
          "7. GEFORCE NVIDIA 3080TI");
       
-      opcion = prompt("Desea ingresar una opcion?: (si/no), (*) para salir");
+      opcion = prompt("Desea ingresar una opcion?: ('si'), ('no' o '*') para salir");
 
       if(opcion == "no"){
 
@@ -65,7 +65,7 @@ function mostrarMenu(numero){
          }
          if(numero >= 1 && numero <=7){
 
-            opcion = prompt("Desea ver otra vez el menú? (si/no), (*) para salir");               
+            opcion = prompt("Desea ver otra vez el menú? ('si'), ('no' o '*') para salir");               
                if(opcion == "no" || opcion == "*"){
                   break
                }

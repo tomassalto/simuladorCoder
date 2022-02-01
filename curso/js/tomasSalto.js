@@ -1,40 +1,4 @@
-// function mostrarPrecios(menuOpciones){
-     
-//    switch(menuOpciones){
-
-//       case 1:
-//        console.log("El precio de GEFORCE NVIDIA 2060 es de: 145.000 ARS");
-//        break;
-
-//       case 2:
-//        console.log("El precio de GEFORCE NVIDIA 3060 es de: 150.000 ARS");
-//        break;
-//       case 3:
-//        console.log("El precio de GEFORCE NVIDIA 3060TI es de: 180.000 ARS");
-//        break;
-
-//       case 4:
-//        console.log("El precio de GEFORCE NVIDIA 3070 es de: 210.000 ARS");
-//        break;
-
-//        case 5:
-//        console.log("El precio de GEFORCE NVIDIA 3070TI es de: 260.000 ARS");
-//        break;
-
-//        case 6:
-//        console.log("El precio de GEFORCE NVIDIA 3080 es de: 315.000 ARS");
-//        break;
-
-//        case 7:
-//        console.log("El precio de GEFORCE NVIDIA 3080TI es de: 410.000 ARS");
-//        break;
-       
-//        default:
-//           console.log("Error!");
-//           break; 
-//    }
-        
-// }
+//funciones
 
 function mostrarMenu(numero){
 
@@ -66,8 +30,7 @@ function mostrarMenu(numero){
          else{
 
             window.alert("Ingrese una opcion correcta!");
-            
-                              
+                                          
          }                    
       }
          
@@ -77,70 +40,35 @@ function mostrarMenu(numero){
    }
 }   
 
-//objetos
-
-// const placaDeVideo1 = {
-
-//    nombre : "Nvidia Geforce 2060",
-//    ram : "8gb",
-//    precio : "145.000 ars",
-
-// }
-
-// console.log (placaDeVideo1);
-// console.log (placaDeVideo1.nombre);
-// console.log (placaDeVideo1.ram);
-// console.log (placaDeVideo1.precio);
-
-// console.log (placaDeVideo1["nombre"]);
-// console.log (placaDeVideo1["ram"]);
-// console.log (placaDeVideo1["precio"]);
-
-// placaDeVideo1.marca = "Zotac";
-// console.log(placaDeVideo1.marca);
-
-// function placaDeVideo(nombre, ram, precio){
-
-//    this.nombre = nombre;
-//    this.ram = ram;
-//    this.precio = precio;
-// }
-
-// const placaDeVideo1 = new placaDeVideo("Nvidia Geforce 2060","8GB","145.000 ARS");
-// console.log(placaDeVideo1);
-// console.log(placaDeVideo1.nombre);
-// console.log(placaDeVideo1.ram);
-// console.log(placaDeVideo1.precio);
-
 function mostrarDatos(menuOpciones){
 
    switch(menuOpciones){
 
       case 1:
-       console.log(placaDeVideo1);
+       console.log(placasDeVideoArray[0]);
        break;
 
       case 2:
-       console.log(placaDeVideo2);
+       console.log(placasDeVideoArray[1]);
        break;
       case 3:
-       console.log(placaDeVideo3);
+       console.log(placasDeVideoArray[2]);
        break;
 
       case 4:
-       console.log(placaDeVideo4);
+       console.log(placasDeVideoArray[3]);
        break;
 
        case 5:
-       console.log(placaDeVideo5);
+       console.log(placasDeVideoArray[4]);
        break;
 
        case 6:
-       console.log(placaDeVideo6);
+       console.log(placasDeVideoArray[5]);
        break;
 
        case 7:
-       console.log(placaDeVideo7);
+       console.log(placasDeVideoArray[6]);
        break;
        
        default:
@@ -148,6 +76,8 @@ function mostrarDatos(menuOpciones){
           break; 
    }
 }
+
+//objetos 
 
 class placaDeVideo{
 
@@ -173,6 +103,13 @@ const placaDeVideo5 = new placaDeVideo ("Nvidia Geforce 3070TI","8GB","260.000 a
 const placaDeVideo6 = new placaDeVideo ("Nvidia Geforce 3080","10GB","347.000 ars","MSI");
 
 const placaDeVideo7 = new placaDeVideo ("Nvidia Geforce 3080TI","12GB","410.000 ars","PYN");
+
+//array
+
+placasDeVideoArray = [placaDeVideo1,placaDeVideo2,placaDeVideo3,placaDeVideo4,placaDeVideo5,placaDeVideo6,placaDeVideo7];
+console.log("Tenemos "+placasDeVideoArray.length+" placas de video en stock");
+
+//programa principal
 
 opcion = prompt("Desea ver el menu de compras?: (si/no)");
 

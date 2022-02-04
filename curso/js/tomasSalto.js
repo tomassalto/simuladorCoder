@@ -6,9 +6,23 @@ function mostrarMenu(numero){
       
       opcion = prompt("Desea ingresar una opcion?: ('si'), ('no' o '*') para salir");
 
-      if(opcion == "no"){
+      if(opcion == "no" || opcion == "*"){
 
-         break;
+         preguntaDatos = prompt("Está interesado en adquirir nuestros productos? Ponga 'si' para darnos sus datos personales y contactarnos con usted. 'no' para salir.");
+
+         if(preguntaDatos == "si"){
+
+            guardar = pedirDatos();{
+      
+             console.log(guardar);
+             break;
+            
+            }
+            
+         }else{
+
+            break;
+         }
       }   
       if(opcion == "si"){
 
@@ -77,6 +91,17 @@ function mostrarDatos(menuOpciones){
    }
 }
 
+function pedirDatos(nombreUsuario,mail, telefono){
+
+   const datosPersonales = [nombreUsuario = prompt("Ingrese su nombre: "),
+   mail = prompt("Ingrese su email: "),
+   telefono = prompt("Ingrese su numero de telefono: ")];
+  
+   return datosPersonales.sort();
+}
+
+
+
 //objetos 
 
 class placaDeVideo{
@@ -131,4 +156,20 @@ if(opcion == "si"){
    window.alert("Adios!");
    
 }
+
+
+
+// const array = [nombreUsuario = prompt("Ingrese su nombre: "),
+//    mail = prompt("Ingrese su email: "),
+//    telefono = prompt("Ingrese su numero de telefono: ")];
+  
+// function pedirDatazos(arr,funcion){
+
+//    for(const elemento of arr){
+//       funcion(elemento);
+//    }
+// }
+
+// pedirDatazos(array,console.log);
+
 

@@ -36,6 +36,11 @@ function mostrarMenu(numero){
          "6. GEFORCE NVIDIA 3080"+"\n"+
          "7. GEFORCE NVIDIA 3080TI"));  
          
+         let mostrar = document.createElement("p")
+         mostrar.innerHTML = '<h3>Contenido de placas</h3>'
+         console.log(mostrar);
+         
+
          if(numero >= 1 && numero <= 7){
       
             mostrarDatos(numero);
@@ -157,19 +162,14 @@ if(opcion == "si"){
    
 }
 
+const paisContenedor = document.getElementById("paisesDisponibles");
 
+let paisesArray = ['Argentina','Chile', 'Brasil']
 
-// const array = [nombreUsuario = prompt("Ingrese su nombre: "),
-//    mail = prompt("Ingrese su email: "),
-//    telefono = prompt("Ingrese su numero de telefono: ")];
-  
-// function pedirDatazos(arr,funcion){
-
-//    for(const elemento of arr){
-//       funcion(elemento);
-//    }
-// }
-
-// pedirDatazos(array,console.log);
+for(const paises of paisesArray){
+   let li = document.createElement('li')
+   li.innerHTML = paises
+   paisContenedor.appendChild(li)
+}
 
 

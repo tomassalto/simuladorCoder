@@ -34,6 +34,10 @@ const placasStock = [
 ]
 
 const contenedorPlacas = document.querySelector(".contenedor-placas");
+const carritoPlacas = document.querySelector(".carrito-placas");
+const rotar = document.querySelector("#tarjeta");
+arrayCarritos = [];
+arrayEliminar = [];
 
 mostrarPlacas();
 
@@ -48,24 +52,78 @@ function mostrarPlacas(){
         const imagenPlacas = document.createElement('img');
         imagenPlacas.classList.add('imagen-placas');
         imagenPlacas.src = placaStock.img
-
+        imagenPlacas.addEventListener('mouseenter', () => {
+         
+        imagenPlacas.classList.toggle('flipCard');
+       
+       })
+                        
         const tituloPlacas = document.createElement('h3');
         tituloPlacas.textContent = placaStock.name;
 
         const botonCarrito = document.createElement('button');
         botonCarrito.classList.add('boton-carrito');
         botonCarrito.textContent = "Agregar al carrito";
-        botonCarrito.onclick = agregarCarrito;
+        botonCarrito.onclick = () =>{
+            agregarCarrito(placaStock.id)
+        };
 
+      
         divPlacas.appendChild(imagenPlacas);
         divPlacas.appendChild(tituloPlacas);
         divPlacas.appendChild(botonCarrito);
+                
+               
 
         contenedorPlacas.appendChild(divPlacas);
         
     });
 }
 
-function agregarCarrito(){
-    console.log("Agregaste un producto al carrito!");
+function agregarCarrito(id){
+    const placasAgregadas = placasStock.find(placaStock => placaStock.id === id);
+    arrayCarritos.push(placasAgregadas);
+
+    mostrarElCarrito(arrayCarritos);
+    
 }
+
+function eliminarCarrito(id){
+    const carritoEliminado = placasStock.find(placaStock => placaStock.id === id);
+    arrayCarritos.pop(carritoEliminado);
+
+    mostrarElCarrito(arrayCarritos);
+
+}
+function mostrarElCarrito(carritos){
+
+    carritoPlacas.innerHTML = "";
+    carritos.forEach(function (carrito) {
+                
+        const divPlacas = document.createElement('div');
+        divPlacas.classList.add('card');
+
+        const imagenPlacas = document.createElement('img');
+        imagenPlacas.classList.add('imagen-placas');
+        imagenPlacas.src = carrito.img;
+
+        const tituloPlacas = document.createElement('h3');
+        tituloPlacas.textContent = carrito.name;
+
+        const botonEliminar = document.createElement('button');
+        botonEliminar.classList.add('boton-carrito');
+        botonEliminar.textContent = "Eliminar del carrito";
+        botonEliminar.onclick = () =>{
+            eliminarCarrito(carrito.id)
+        };
+
+        divPlacas.appendChild(imagenPlacas);
+        divPlacas.appendChild(tituloPlacas);
+        divPlacas.appendChild(botonEliminar);
+       
+        carritoPlacas.appendChild(divPlacas);
+
+     
+    })
+}
+

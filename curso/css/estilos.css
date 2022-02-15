@@ -5,7 +5,7 @@
 }
 
 body {
-    background-color: #2B2D42;
+    background-color: #66191d;
     color: white;
     
 }
@@ -22,6 +22,7 @@ img {
 
 h1 {
     text-align: center;
+    
 
 } 
 .titulo {
@@ -66,10 +67,24 @@ h1 {
 
 
 .flipCard{
-    transform: rotateY(180deg);
-    transition: 1s;
+    transform: rotateY(3.142rad);
+    transition: 2s;
+    
+  
+  
+     
+    
     
 }
+
+.flipCard:hover{
+    opacity: 0; 
+    visibility: visible;
+    
+      
+    
+}
+
 .card {
     margin-bottom: 2rem;
     text-align: center;
@@ -77,8 +92,36 @@ h1 {
     border-radius: 10px;
     color: white;
     overflow: hidden;
+    display: inline-block;
+    
+    
+    
+   
+    
+    
 }
 
+.parra{
+   
+    transition: 2s;
+    text-align: center;
+    opacity: 0;
+    
+}
+.parra:hover{
+
+text-transform: capitalize;
+}
+
+.card:hover {
+    
+    background :url(https://fondosmil.com/fondo/39750.jpg) no-repeat;
+    display: block;
+    
+
+
+    
+}
 
 .imagen-placas {
     height: auto;
@@ -86,6 +129,7 @@ h1 {
     object-fit: cover;
     object-position: center center;
     max-height: auto;
+    
     
 }
 
@@ -121,3 +165,4 @@ h1 {
     gap: 1rem;
     grid-template-columns: repeat(4, 1fr);
 } 
+

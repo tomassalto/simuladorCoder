@@ -31,6 +31,48 @@ const placasStock = [
     {id:8,
     name: "Nvidia Geforce 3090",
     img: '../imagenes/3090.png' }
+];
+
+const infoPlacas = [
+    {id:1,
+    ram:"6gb",    
+    precio: "150.000 ars",
+    marca: 'Zotac'},
+
+    {id:2,
+    ram:"8gb",  
+    precio: "145.000 ars",
+    marca: "Zotac" },
+
+    {id:3,
+    ram:"8gb",  
+    precio: "180.000 ars",
+    marca: 'PNY' },
+        
+    {id:4,
+    ram:"8gb",      
+    precio: "210.000 ars",
+    marca: 'Zotac' },
+        
+    {id:5,
+    ram:"8gb",  
+    precio: "260.000 ars",
+    marca: 'Zotac' },
+
+    {id:6,
+    ram:"8gb",      
+    precio: "347.000 ars",
+    marca: 'MSI' },
+
+    {id:7,
+    ram:"8gb",  
+    precio: "410.000 ars",
+    marca: 'PNY' },
+
+    {id:8,
+    ram:"8gb",  
+    precio: "582.000 ars",
+    marca: 'Zotac' }
 ]
 
 const contenedorPlacas = document.querySelector(".contenedor-placas");
@@ -54,12 +96,18 @@ function mostrarPlacas(){
         imagenPlacas.src = placaStock.img
         imagenPlacas.addEventListener('mouseenter', () => {
          
-        imagenPlacas.classList.toggle('flipCard');
-       
+        imagenPlacas.classList.toggle('flipCard')
+      
+        
        })
                         
         const tituloPlacas = document.createElement('h3');
         tituloPlacas.textContent = placaStock.name;
+
+        const infosPlacas = document.createElement('p');
+        infosPlacas.classList.add('card');
+        infosPlacas.innerText = infoPlacas[1,2,3];
+        
 
         const botonCarrito = document.createElement('button');
         botonCarrito.classList.add('boton-carrito');
@@ -71,7 +119,11 @@ function mostrarPlacas(){
       
         divPlacas.appendChild(imagenPlacas);
         divPlacas.appendChild(tituloPlacas);
+        divPlacas.appendChild(infosPlacas);
         divPlacas.appendChild(botonCarrito);
+        
+        
+        
                 
                
 
@@ -94,6 +146,12 @@ function eliminarCarrito(id){
 
     mostrarElCarrito(arrayCarritos);
 
+}
+
+function mostrarInformacion(id){
+
+    const informacionMostrada = infoPlacas.find(infosStock => infosStock.id === id);
+    
 }
 function mostrarElCarrito(carritos){
 
@@ -126,4 +184,5 @@ function mostrarElCarrito(carritos){
      
     })
 }
+
 

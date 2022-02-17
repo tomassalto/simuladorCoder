@@ -1,46 +1,58 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8"/>
-        <meta http-equiv="X-UA-Compatible"
-        content="IE-edge"/>
-        <meta name="viewport"
-        content="width=device-width, initial-scale=1.0"/>
-        <link rel="shorcut icon" href="" type="image/x-icon"/>
-        <link rel="stylesheet" href="/css/estilos.css"/>
-        <title>Compra de Placas de Videos</title>
+    <head>   
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://kit.fontawesome.com/df59baf6b8.js" crossorigin="anonymous"></script>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link rel="stylesheet" href="./css/styles.css">
+        
+        
+        <title>GamerCompra</title>
 
         
     </head>
     <body>
+        <header>
+            <h1 id="titular">GamerCompra</h1>
+            <button id="boton-carrito"><i class="fas fa-shopping-cart"></i><span id="contador-carrito">0</span></button> 
+        </header>
+        
+        <select id="selecTipo">
+            <option value="all">Todos</option>
+            <option value="L">Placas</option>
+            <option value="M">Monitores</option>
+            <option value="S">Perifericos</option>
+        </select>
+      
+        <main id="contenedor-productos">
 
-        <h1><span>Compre aqui su placa de video</span></h1>
-        <h3>PAISES DISPONIBLES PARA LA COMPRA</h3>
-        <ul id="paisesDisponibles"></ul>
-
-        <main class="contenedor">
-            <p></p>
-            <div class="tarjeta" id="tarjeta">
-                <div class="adelante">
-                    
-                    <div class="atras"></div>
-                </div>
-                
-            </div>
-            <div class="volverGirar"></div>
-            <div class="contenedor-placas">
-                
-              
-            </div>
-            <div class="centrado">centrado</div>
-                <h2>Mi carrito de compras</h2>
-                <div class="carrito-placas">
-                <div class="padding"></div>   
-               
-            </div>
-            
         </main>
-        <script src="./js/main.js"></script>
+
+
+        <div class="modal-contenedor">
+            <div class="modal-carrito">
+                <h3>Carrito</h3>
+                <button id="carritoCerrar"><i class="fas fa-times-circle"></i></button>
+                <div id="carrito-contenedor">
+                     <!-- <div class="productoEnCarrito">
+                        <p>Buzo 1</p>
+                        <p>Precio: $1200</p>
+                        <button class="boton-eliminar"><i class="fas fa-trash-alt"></i></button>
+                    </div>  -->
+                </div>
+                <p class="precioProducto">Precio total: $<span id="precioTotal"></span></p>
+            </div>
+        </div>                   
+              
+        <script src="./js/array.js"></script>
+        <script src="./js/modal.js"></script>
+        <script src="./js/nuevo.js"></script>
+
 
 
     </body>

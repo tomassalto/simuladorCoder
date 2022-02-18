@@ -33,7 +33,24 @@ function mostrarProductos(array){
             let btnAgregar = document.getElementById(`botonAgregar${producto.id}`);
 
             btnAgregar.addEventListener('click', () => {
-            agregarAlCarrito(producto.id);
+                   
+                Toastify({
+                    text: "Agregaste exitosamente un articulo a tu carrito!",
+                    duration: 3000,
+                    destination: "https://github.com/apvarun/toastify-js",
+                    newWindow: true,
+                    close: true,
+                    gravity: "top", // `top` or `bottom`
+                    position: "left", // `left`, `center` or `right`
+                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                    style: {
+                      background: "linear-gradient(to right, #00b09b, #96c93d)",
+                    },
+                    onClick: function(){} // Callback after click
+                }).showToast();
+                
+                    agregarAlCarrito(producto.id);
+            
             });
      }
 }
@@ -44,6 +61,7 @@ function agregarAlCarrito(id){
     if(repetido){
         repetido.cantidad = repetido.cantidad + 1;
         document.getElementById(`cantidad${repetido.id}`).innerHTML = `<p id="cantidad${repetido.id}">Cantidad: ${repetido.cantidad}</p>`
+        
         actualizarCarrito();
     }else{
 
@@ -65,11 +83,47 @@ function agregarAlCarrito(id){
         let btnEliminar = document.getElementById(`btnEliminar${productoAgregar.id}`)
 
         btnEliminar.addEventListener('click', ()=>{
+             //libreria
             if(productoAgregar.cantidad == 1){
+                Swal.fire({
+                    title: 'Estas seguro/a?',
+                    text: "Este articulo se removera de tu carrito!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Sí, remover!'
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                       
+                      Swal.fire(
+                        'Removido!',
+                        'El articulo ha sido removido del articulo.',
+                        'success'
+                      )
+                    }else(result.notConfirmed)
+                  })
                 btnEliminar.parentElement.remove();    
                 carritoCompras = carritoCompras.filter(item => item.id != productoAgregar.id);
                 actualizarCarrito();
             }else{
+                Swal.fire({
+                    title: 'Estas seguro/a?',
+                    text: "Este articulo se removera de tu carrito!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Sí, remover!'
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                      Swal.fire(
+                        'Removido!',
+                        'El articulo ha sido removido del articulo.',
+                        'success'
+                      )
+                    }else(result.notConfirmed)
+                  })
                 productoAgregar.cantidad = productoAgregar.cantidad - 1;
                 document.getElementById(`cantidad${productoAgregar.id}`).innerHTML = `<p id="cantidad${productoAgregar.id}">Cantidad: ${productoAgregar.cantidad}</p>`
                 actualizarCarrito();
@@ -101,3 +155,4 @@ function recuperar(){
 }
 
 recuperar();
+

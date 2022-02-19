@@ -11,6 +11,9 @@
     <link rel="shortcut icon" href="./imagenes/Gamer Compra (1).png">
 </head>
 <body>
+    
+   <a href="index.html"><button id="btn-volver">Volver</button></a>
+    
 	<div class="contenedor">
 
 		<!-- Tarjeta -->
@@ -51,8 +54,8 @@
 						<p class="ccv"></p>
 					</div>
 				</div>
-				<p class="leyenda">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus exercitationem, voluptates illo.</p>
-				<a href="#" class="link-banco">www.tubanco.com</a>
+				<p class="leyenda">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga nulla quae, voluptatem officiis et, laboriosam veniam, omnis dolor dolores amet dolorum id a adipisci reiciendis. Eum sint dolorem facilis iusto..</p>
+				<a href="#" class="link-banco">www.bancofrances.com.ar</a>
 			</div>
 		</section>
 
@@ -66,26 +69,26 @@
 		<!-- Formulario -->
 		<form action="" id="formulario-tarjeta" class="formulario-tarjeta">
 			<div class="grupo">
-				<label for="inputNumero">Número Tarjeta</label>
-				<input type="text" id="inputNumero" maxlength="19" autocomplete="off">
+				<label id="numerito" for="inputNumero">Número Tarjeta</label>
+				<input type="text" id="inputNumero" class="dataInput" maxlength="19" autocomplete="off">
 			</div>
 			<div class="grupo">
-				<label for="inputNombre">Nombre</label>
-				<input type="text" id="inputNombre" maxlength="19" autocomplete="off">
+				<label id="nombres" for="inputNombre">Nombre</label>
+				<input type="text" id="inputNombre" class="dataInput" maxlength="19" autocomplete="off">
 			</div>
 			<div class="flexbox">
 				<div class="grupo expira">
-					<label for="selectMes">Expiracion</label>
+					<label id="mesiano" for="selectMes">Expiracion</label>
 					<div class="flexbox">
 						<div class="grupo-select">
-							<select name="mes" id="selectMes">
+							<select class="dataInput" name="mes" id="selectMes">
 								<option disabled selected>Mes</option>
 							</select>
 							<i class="fas fa-angle-down"></i>
 						</div>
 						<div class="grupo-select">
-							<select name="year" id="selectYear">
-								<option disabled selected>Año</option>
+							<select class="dataInput" name="year" id="selectYear">
+								<option id="messi" disabled selected>Año</option>
 							</select>
 							<i class="fas fa-angle-down"></i>
 						</div>
@@ -94,11 +97,14 @@
 
 				<div class="grupo ccv">
 					<label for="inputCCV">CCV</label>
-					<input type="text" id="inputCCV" maxlength="3">
+					<input class="dataInput" type="text" id="inputCCV" maxlength="3">
 				</div>
 			</div>
 			<button id="btnExito" type="button" class="btn-enviar">Pagar</button>
 		</form>
+	</div>
+	<div>
+		<img id="fotito" src="./imagenes/Gamer Compra (1).png">
 	</div>
     <script src="sweetalert2/dist/sweetalert2.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

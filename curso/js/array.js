@@ -65,6 +65,8 @@ let placasStock = [
     cantidad: 1}
 ];
 
+datosPersonales = [];
+
 const tarjeta = document.querySelector('#tarjeta'),
 	  btnAbrirFormulario = document.querySelector('#btn-abrir-formulario'),
 	  formulario = document.querySelector('#formulario-tarjeta'),
@@ -72,10 +74,17 @@ const tarjeta = document.querySelector('#tarjeta'),
 	  nombreTarjeta = document.querySelector('#tarjeta .nombre'),
 	  logoMarca = document.querySelector('#logo-marca'),
 	  firma = document.querySelector('#tarjeta .firma p'),
+	  numero = document.querySelector('#numerito'),
 	  mesExpiracion = document.querySelector('#tarjeta .mes'),
       btnSubmit = document.querySelector('#btnExito'),
+	  nombre = document.querySelector('#nombres'),
+	  nombrecito = document.querySelector('#inputNombre'),
+	
+	  formularioNumero = document.querySelector('#inputNumero'),
 	  yearExpiracion = document.querySelector('#tarjeta .year');
 	  ccv = document.querySelector('#tarjeta .ccv');
+
+
 
 // * Volteamos la tarjeta para mostrar el frente.
 const mostrarFrente = () => {
@@ -127,6 +136,7 @@ formulario.inputNumero.addEventListener('keyup', (e) => {
 	.trim();
 
 	numeroTarjeta.textContent = valorInput;
+		
 
 	if(valorInput == ''){
 		numeroTarjeta.textContent = '#### #### #### ####';
@@ -144,6 +154,8 @@ formulario.inputNumero.addEventListener('keyup', (e) => {
 		const imagen = document.createElement('img');
 		imagen.src = 'imagenes/mastercard.png';
 		logoMarca.appendChild(imagen);
+	}else{
+		numeroTarjeta.classList.toggle(arr[0]);
 	}
 
 	// Volteamos la tarjeta para que el usuario vea el frente.
@@ -157,9 +169,13 @@ formulario.inputNombre.addEventListener('keyup', (e) => {
 	formulario.inputNombre.value = valorInput.replace(/[0-9]/g, '');
 	nombreTarjeta.textContent = valorInput;
 	firma.textContent = valorInput;
+		
 
 	if(valorInput == ''){
 		nombreTarjeta.textContent = 'Jhon Doe';
+	}
+	if(valorInput != ""){
+		nombreTarjeta.textContent = `${arr[1]}`;
 	}
 
 	mostrarFrente();
@@ -190,10 +206,13 @@ formulario.inputCCV.addEventListener('keyup', () => {
 	.replace(/\D/g, '');
 
 	ccv.textContent = formulario.inputCCV.value;
+	datosPersonales.push(formulario.inputCCV.value)
 });
 
 
 btnSubmit.addEventListener('click', ()=>{
+
+	guardarDatos();
 
     Swal.fire({
         icon: 'success',
@@ -202,3 +221,45 @@ btnSubmit.addEventListener('click', ()=>{
         
       })
 })
+
+function guardarDatos(){
+
+	var arrayInput = new Array();
+	var inputsValue = document.getElementsByClassName('dataInput');
+	nameValue = [].map.call(inputsValue,function(dataInput){
+		arrayInput.push(dataInput.value);
+		console.log(arrayInput)
+	});
+
+	localStorage.setItem('datos', JSON.stringify(arrayInput));
+}
+ 
+function recuperarDatos(){
+	let recuperarInfo = JSON.parse(localStorage.getItem('datos'));
+	console.log(recuperarInfo);
+
+	numero.appendChild(formularioNumero);
+	nombre.appendChild(nombrecito);
+	
+
+
+	if(recuperarInfo){
+		
+		rellenarDatos(recuperarInfo);
+		
+	}
+}
+recuperarDatos();
+
+function rellenarDatos(arr){
+    
+	
+	document.getElementById('numerito').innerHTML = `<input type="text" value="${arr[0]}" id="inputNumero" class="dataInput" maxlength="19" autocomplete="off"> `
+	document.getElementById('nombres').innerHTML = `<input type="text" value="${arr[1]}" id="inputNombre" class="dataInput" maxlength="19" autocomplete="off"> `
+	
+	
+	
+
+
+	
+}

@@ -289,3 +289,25 @@ body {
 .formulario-tarjeta .btn-enviar:hover {
 	background: #26a69a;
 }
+
+#btn-volver{
+  border: none;
+	padding: 10px;
+	font-size: 22px;
+	color: #fff;
+	background: rgb(225, 76, 65);
+	box-shadow: 2px 2px 10px 0px rgba(0,85,212,0.4);
+	cursor: pointer;
+  position: relative;
+  float: left;
+  margin: 10px;
+}
+
+#fotito{
+	
+	display:block;
+	margin:auto;
+	margin: -250px 755px;
+	
+
+}

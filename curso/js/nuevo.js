@@ -8,10 +8,26 @@ const precioTotal = document.getElementById('precioTotal');
 
 const selecTipo = document.getElementById('selecTipo')
 
+selecTipo.addEventListener('change', () =>{
+  if(selecTipo.value == 'all'){
+    mostrarProductos(placasStock);   
+       
+         
+    
+  }if(selecTipo.value == 'm'){
+    mostrarProductos(placasStock.filter(element => element.clave == "m"));
+    for (const producto in placasStock) {
+      document.getElementById('problemas').innerHTML = `<p id="problemas">Ram: ${producto.marca}</p>`
+   }  
+  }
+    
+})
+
 mostrarProductos(placasStock);
 
 function mostrarProductos(array){
-
+    contenedorPlacas.innerHTML = "";
+    //mostrar productos en el html
     for (const producto of array) {
         let div = document.createElement('div');
         div.className = 'producto';
@@ -22,12 +38,13 @@ function mostrarProductos(array){
                                     <a id="botonAgregar${producto.id}" class = "btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add_shopping_cart</i></a>
                                 </div>
                                 <div class = "card-content">
-                                    <p>Ram: ${producto.ram}</p>
+                                    <p id="problemas">Ram: ${producto.ram}</p>
                                     <p>Marca: ${producto.marca}</p>
                                     <p>$ ${producto.precio}</p>
                                 </div>
                             </div>`
 
+        
         contenedorPlacas.appendChild(div);
 
             let btnAgregar = document.getElementById(`botonAgregar${producto.id}`);
@@ -56,19 +73,23 @@ function mostrarProductos(array){
 }
 
 function agregarAlCarrito(id){
-
+    
     let repetido = carritoCompras.find(buscar => buscar.id == id)
     if(repetido){
+      //agregar cantidad si esta repetido
         repetido.cantidad = repetido.cantidad + 1;
         document.getElementById(`cantidad${repetido.id}`).innerHTML = `<p id="cantidad${repetido.id}">Cantidad: ${repetido.cantidad}</p>`
-        
         actualizarCarrito();
     }else{
-
+        document.getElementById('botoncito').removeAttribute('disabled');
+        
         let productoAgregar = placasStock.find(elemento => elemento.id == id);
-        console.log(productoAgregar);
         carritoCompras.push(productoAgregar);
+        // document.getElementById('carrito-contenedor').innerHTML = `<p>Tu carrito:</p>`      
+
         actualizarCarrito();
+        
+        
         
         let div = document.createElement('div');
         div.className = 'productoEnCarrito';
@@ -79,7 +100,8 @@ function agregarAlCarrito(id){
                             </div>`
     
         contenedorCarrito.appendChild(div);
-    
+
+        
         let btnEliminar = document.getElementById(`btnEliminar${productoAgregar.id}`)
 
         btnEliminar.addEventListener('click', ()=>{
@@ -92,6 +114,7 @@ function agregarAlCarrito(id){
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
+                    cancelButtonText: 'cancelar',
                     confirmButtonText: 'Sí, remover!'
                   }).then((result) => {
                     if (result.isConfirmed) {
@@ -106,6 +129,14 @@ function agregarAlCarrito(id){
                 btnEliminar.parentElement.remove();    
                 carritoCompras = carritoCompras.filter(item => item.id != productoAgregar.id);
                 actualizarCarrito();
+                localStorage.setItem('carrito', JSON.stringify(carritoCompras));
+                //operador avanzado
+                carritoCompras.length === 0 && document.getElementById('botoncito').setAttribute('disabled',true);              
+                actualizarCarrito();
+               
+                    
+                    
+                  
             }else{
                 Swal.fire({
                     title: 'Estas seguro/a?',
@@ -127,23 +158,33 @@ function agregarAlCarrito(id){
                 productoAgregar.cantidad = productoAgregar.cantidad - 1;
                 document.getElementById(`cantidad${productoAgregar.id}`).innerHTML = `<p id="cantidad${productoAgregar.id}">Cantidad: ${productoAgregar.cantidad}</p>`
                 actualizarCarrito();
+                localStorage.setItem('carrito', JSON.stringify(carritoCompras))
+                //operador avanzado
+                carritoCompras === 0 && document.getElementById('botoncito').setAttribute('disabled',true);
+
+                  actualizarCarrito();
+                  
+                  
+                  
+                
             }
             
         })
     }
-
+        //local storage
         localStorage.setItem('carrito', JSON.stringify(carritoCompras))
    
 }
 
-
+//actualizar carrito
 function actualizarCarrito(){
     contadorCarrito.innerText = carritoCompras.reduce((acc,el)=> acc + el.cantidad, 0);
     precioTotal.innerText = carritoCompras.reduce((acc,el)=> acc + (el.precio * el.cantidad), 0);
 }
-
+//recuperar datos del local storage
 function recuperar(){
-    let recuperarLS = JSON.parse(localStorage.getItem('carrito'));
+  //operador avanzado
+    let recuperarLS = JSON.parse(localStorage.getItem('carrito')) || [];
     console.log(recuperarLS);
 
     if(recuperarLS){

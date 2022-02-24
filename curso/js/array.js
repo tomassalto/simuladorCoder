@@ -1,69 +1,33 @@
+pulgada = "";
 let placasStock = [
+    {id:1, name: "Nvidia Geforce 2060", img: './imagenes/geforce-rtx-2060-super-ga.jpg', ram:"6gb", precio: 150000, marca: 'Zotac', cantidad: 1, clave: "p" },
+    {id:2, name: "Nvidia Geforce 3060", img: './imagenes/3060.jpg', ram:"8gb",precio: 145000, marca: "Zotac", cantidad: 1, clave: "p" },
+    {id:3, name: "Nvidia Geforce 3060TI", img: './imagenes/3060TI.jpg', ram:"8gb", precio: 167000, marca: 'PNY', cantidad: 1, clave: "p" },
+    {id:4, name: "Nvidia Geforce 3070", img: './imagenes/3070.jpg', ram:"8gb", precio: 210000, marca: 'Zotac', cantidad: 1, clave: "p" },
+    {id:5, name: "Nvidia Geforce 3070TI", img: './imagenes/3070TI.jpg', ram:"8gb", precio: 260000, marca: 'Zotac', cantidad: 1, clave: "p" },
+	{id:6, name: "Nvidia Geforce 3080", img: './imagenes/3080.jpg', ram:"8gb", precio: 347000, marca: 'MSI', cantidad: 1, clave: "p" },
+    {id:7, name: "Nvidia Geforce 3080TI", img: './imagenes/3080TI.jpg', ram:"8gb", precio: 410000, marca: 'PNY', cantidad: 1, clave: "p" },
+    {id:8, name: "Nvidia Geforce 3090", img: './imagenes/3090.jpg', ram:"8gb", precio: 582000, marca: 'Zotac', cantidad: 1, clave: "p" },
 
-    {id:1,
-    name: "Nvidia Geforce 2060",
-    img: '../imagenes/geforce-rtx-2060-super-ga.jpg',
-    ram:"6gb",    
-    precio: 150000,
-    marca: 'Zotac',
-    cantidad: 1},
+	{id:9,
+	name: "Monitor 144hz",
+	img: './imagenes/monitorjpg.jpg',
+	precio: 53000,
+	marca:'BenQ',
+	cantidad: 1,
+	pulgada: 26,
+	clave: "m",  },
 
-    {id:2,
-    name: "Nvidia Geforce 3060",
-    img: '../imagenes/3060.jpg',
-    ram:"8gb",  
-    precio: 145000,
-    marca: "Zotac",
-    cantidad: 1},
+	{id:10, name: "Monitor 20MNK400H", img: './imagenes/lg20.jpg', pulgada: "20", precio: 24000, marca:'LG', cantidad: 1, clave: "m"  },
+	{id:11, name: "Monitor T350H FHD", img: './imagenes/monitor2275.jpg', pulgada: 22, precio: 26000, marca:'Samsung', cantidad: 1, clave: "m"  },
+	{id:12, name: "Monitor 22MN430H-B", img: './imagenes/samsung24curvo.jpg', pulgada: 24, precio: 27160, marca:'Samsung', cantidad: 1, clave: "m"  },
+	{id:13, name: "Monitor FULL HD 144hz", img: './imagenes/lg27144.jpg', pulgada: 27, precio: 62590, marca:'LG', cantidad: 1, clave: "m"  },
+	{id:14, name: "Monitor XG2405", img: './imagenes/viewsonic27.jpg', pulgada: 27, precio: 67200, marca:'ViewSonic', cantidad: 1, clave: "m"  },
+	{id:15, name: "Monitor 32GN500", img: './imagenes/ultragear.jpg', pulgada: 32, precio: 75830, marca:'UltraGear', cantidad: 1, clave: "m"  },
+	{id:16, name: "Monitor 4K XG3220", img: './imagenes/4kviewsonic.jpg', pulgada: 32, precio: 122000, marca:'ViewSonic', cantidad: 1, clave: "m"}
 
-    {id:3,
-    name: "Nvidia Geforce 3060TI",
-    img: '../imagenes/3060TI.jpg',
-    ram:"8gb",  
-    precio: 180000,
-    marca: 'PNY',
-    cantidad: 1},
-        
-    {id:4,
-    name: "Nvidia Geforce 3070",
-    img: '../imagenes/3070.jpg',
-    ram:"8gb",      
-    precio: 210000,
-    marca: 'Zotac',
-    cantidad: 1},
-        
-    {id:5,
-    name: "Nvidia Geforce 3070TI",
-    img: '../imagenes/3070TI.jpg',
-    ram:"8gb",  
-    precio: 260000,
-    marca: 'Zotac',
-    cantidad: 1} ,
-
-    {id:6,
-    name: "Nvidia Geforce 3080",
-    img: '../imagenes/3080.jpg',
-    ram:"8gb",      
-    precio: 347000,
-    marca: 'MSI',
-    cantidad: 1},
-
-    {id:7,
-    name: "Nvidia Geforce 3080TI",
-    img: '../imagenes/3080TI.jpg',
-    ram:"8gb",  
-    precio: 410000,
-    marca: 'PNY',
-    cantidad: 1},
-
-    {id:8,
-    name: "Nvidia Geforce 3090",
-    img: '../imagenes/3090.jpg',
-    ram:"8gb",  
-    precio: 582000,
-    marca: 'Zotac',
-    cantidad: 1}
 ];
+
 
 datosPersonales = [];
 
@@ -155,7 +119,7 @@ formulario.inputNumero.addEventListener('keyup', (e) => {
 		imagen.src = 'imagenes/mastercard.png';
 		logoMarca.appendChild(imagen);
 	}else{
-		numeroTarjeta.classList.toggle(arr[0]);
+		// numeroTarjeta.classList.toggle(arr[0]);
 	}
 
 	// Volteamos la tarjeta para que el usuario vea el frente.
@@ -174,10 +138,7 @@ formulario.inputNombre.addEventListener('keyup', (e) => {
 	if(valorInput == ''){
 		nombreTarjeta.textContent = 'Jhon Doe';
 	}
-	if(valorInput != ""){
-		nombreTarjeta.textContent = `${arr[1]}`;
-	}
-
+	
 	mostrarFrente();
 });
 
@@ -235,20 +196,38 @@ function guardarDatos(){
 }
  
 function recuperarDatos(){
-	let recuperarInfo = JSON.parse(localStorage.getItem('datos'));
+	//operador avanzado
+	let recuperarInfo = JSON.parse(localStorage.getItem('datos')) || [];
 	console.log(recuperarInfo);
+	if(sessionStorage.getItem("autosave")){
+		recuperarInfo.value = sessionStorage.getItem("autosave");
+	}
 
-	numero.appendChild(formularioNumero);
-	nombre.appendChild(nombrecito);
+	// recuperarInfo.forEach(element => {
+	// 	document.getElementById('inputNumero').value = `${element}`
+	// });
+	for (const i of recuperarInfo) {
+		console.log(i);
+		numeroTarjeta.textContent = document.getElementById('inputNumero').value = `${recuperarInfo[0]}`
+		nombreTarjeta.textContent = document.getElementById('inputNombre').value = `${recuperarInfo[1]}`
+		firma.textContent = nombreTarjeta.textContent;
+		mesExpiracion.textContent = document.getElementById('selectMes').value = `${recuperarInfo[2]}`
+		yearExpiracion.textContent = document.getElementById('selectYear').value = `${recuperarInfo[3]}`
+		ccv.textContent = document.getElementById('inputCCV').value = `${recuperarInfo[4]}`
+	}
+		// console.log(element);
+		// document.getElementById('inputNumero').value = `${element[3]}` 
+	};
+	
 	
 
 
-	if(recuperarInfo){
+	// if(recuperarInfo){
 		
-		rellenarDatos(recuperarInfo);
+	// 	rellenarDatos(recuperarInfo);
 		
-	}
-}
+	// }
+
 recuperarDatos();
 
 function rellenarDatos(arr){

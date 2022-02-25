@@ -1,4 +1,3 @@
-pulgada = "";
 let placasStock = [
     {id:1, name: "Nvidia Geforce 2060", img: './imagenes/geforce-rtx-2060-super-ga.jpg', ram:"6gb", precio: 150000, marca: 'Zotac', cantidad: 1, clave: "p" },
     {id:2, name: "Nvidia Geforce 3060", img: './imagenes/3060.jpg', ram:"8gb",precio: 145000, marca: "Zotac", cantidad: 1, clave: "p" },
@@ -8,16 +7,7 @@ let placasStock = [
 	{id:6, name: "Nvidia Geforce 3080", img: './imagenes/3080.jpg', ram:"8gb", precio: 347000, marca: 'MSI', cantidad: 1, clave: "p" },
     {id:7, name: "Nvidia Geforce 3080TI", img: './imagenes/3080TI.jpg', ram:"8gb", precio: 410000, marca: 'PNY', cantidad: 1, clave: "p" },
     {id:8, name: "Nvidia Geforce 3090", img: './imagenes/3090.jpg', ram:"8gb", precio: 582000, marca: 'Zotac', cantidad: 1, clave: "p" },
-
-	{id:9,
-	name: "Monitor 144hz",
-	img: './imagenes/monitorjpg.jpg',
-	precio: 53000,
-	marca:'BenQ',
-	cantidad: 1,
-	pulgada: 26,
-	clave: "m",  },
-
+	{id:9, name: "Monitor 144hz", img: './imagenes/monitorjpg.jpg', precio: 53000, marca:'BenQ', cantidad: 1, pulgada: 26, clave: "m",  },
 	{id:10, name: "Monitor 20MNK400H", img: './imagenes/lg20.jpg', pulgada: "20", precio: 24000, marca:'LG', cantidad: 1, clave: "m"  },
 	{id:11, name: "Monitor T350H FHD", img: './imagenes/monitor2275.jpg', pulgada: 22, precio: 26000, marca:'Samsung', cantidad: 1, clave: "m"  },
 	{id:12, name: "Monitor 22MN430H-B", img: './imagenes/samsung24curvo.jpg', pulgada: 24, precio: 27160, marca:'Samsung', cantidad: 1, clave: "m"  },

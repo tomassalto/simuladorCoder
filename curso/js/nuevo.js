@@ -9,19 +9,20 @@ const precioTotal = document.getElementById('precioTotal');
 const selecTipo = document.getElementById('selecTipo')
 
 selecTipo.addEventListener('change', () =>{
-  if(selecTipo.value == 'all'){
-    mostrarProductos(placasStock);   
-       
-         
+  selecTipo.value == 'all' ?
+    mostrarProductos(placasStock)
+
+    :
+  
+    mostrarProductos(placasStock.filter(element => element.clave == selecTipo.value));
+  
+
     
-  }if(selecTipo.value == 'm'){
-    mostrarProductos(placasStock.filter(element => element.clave == "m"));
-    for (const producto in placasStock) {
-      document.getElementById('problemas').innerHTML = `<p id="problemas">Ram: ${producto.marca}</p>`
-   }  
-  }
+  
     
 })
+
+
 
 mostrarProductos(placasStock);
 
@@ -38,7 +39,7 @@ function mostrarProductos(array){
                                     <a id="botonAgregar${producto.id}" class = "btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add_shopping_cart</i></a>
                                 </div>
                                 <div class = "card-content">
-                                    <p id="problemas">Ram: ${producto.ram}</p>
+                                     ${producto.ram ? `<p id="problemas">Ram: ${producto.ram}</p>` : `<p id="problemas">Pulgada: ${producto.pulgada}</p>`}
                                     <p>Marca: ${producto.marca}</p>
                                     <p>$ ${producto.precio}</p>
                                 </div>
@@ -88,92 +89,97 @@ function agregarAlCarrito(id){
         // document.getElementById('carrito-contenedor').innerHTML = `<p>Tu carrito:</p>`      
 
         actualizarCarrito();
+        mostrarCarrito(productoAgregar)
         
         
-        
-        let div = document.createElement('div');
-        div.className = 'productoEnCarrito';
-        div.innerHTML =     `<p>${productoAgregar.name}</p>
-                            <p>Precio: $${productoAgregar.precio}</p>
-                            <p id="cantidad${productoAgregar.id}">Cantidad: ${productoAgregar.cantidad}</p>
-                            <button id="btnEliminar${productoAgregar.id}" class="boton-eliminar"><i class="fas fa-trash-alt"></i></button>
-                            </div>`
-    
-        contenedorCarrito.appendChild(div);
-
-        
-        let btnEliminar = document.getElementById(`btnEliminar${productoAgregar.id}`)
-
-        btnEliminar.addEventListener('click', ()=>{
-             //libreria
-            if(productoAgregar.cantidad == 1){
-                Swal.fire({
-                    title: 'Estas seguro/a?',
-                    text: "Este articulo se removera de tu carrito!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    cancelButtonText: 'cancelar',
-                    confirmButtonText: 'Sí, remover!'
-                  }).then((result) => {
-                    if (result.isConfirmed) {
-                       
-                      Swal.fire(
-                        'Removido!',
-                        'El articulo ha sido removido del articulo.',
-                        'success'
-                      )
-                    }else(result.notConfirmed)
-                  })
-                btnEliminar.parentElement.remove();    
-                carritoCompras = carritoCompras.filter(item => item.id != productoAgregar.id);
-                actualizarCarrito();
-                localStorage.setItem('carrito', JSON.stringify(carritoCompras));
-                //operador avanzado
-                carritoCompras.length === 0 && document.getElementById('botoncito').setAttribute('disabled',true);              
-                actualizarCarrito();
-               
-                    
-                    
-                  
-            }else{
-                Swal.fire({
-                    title: 'Estas seguro/a?',
-                    text: "Este articulo se removera de tu carrito!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Sí, remover!'
-                  }).then((result) => {
-                    if (result.isConfirmed) {
-                      Swal.fire(
-                        'Removido!',
-                        'El articulo ha sido removido del articulo.',
-                        'success'
-                      )
-                    }else(result.notConfirmed)
-                  })
-                productoAgregar.cantidad = productoAgregar.cantidad - 1;
-                document.getElementById(`cantidad${productoAgregar.id}`).innerHTML = `<p id="cantidad${productoAgregar.id}">Cantidad: ${productoAgregar.cantidad}</p>`
-                actualizarCarrito();
-                localStorage.setItem('carrito', JSON.stringify(carritoCompras))
-                //operador avanzado
-                carritoCompras === 0 && document.getElementById('botoncito').setAttribute('disabled',true);
-
-                  actualizarCarrito();
-                  
-                  
-                  
-                
-            }
-            
-        })
+       
     }
         //local storage
         localStorage.setItem('carrito', JSON.stringify(carritoCompras))
    
+}
+
+
+function mostrarCarrito(productoAgregar){
+  let div = document.createElement('div');
+  div.className = 'productoEnCarrito';
+  div.innerHTML =     `<p>${productoAgregar.name}</p>
+                      <p>Precio: $${productoAgregar.precio}</p>
+                      <p id="cantidad${productoAgregar.id}">Cantidad: ${productoAgregar.cantidad}</p>
+                      <button id="btnEliminar${productoAgregar.id}" class="boton-eliminar"><i class="fas fa-trash-alt"></i></button>
+                      </div>`
+
+  contenedorCarrito.appendChild(div);
+
+  
+  let btnEliminar = document.getElementById(`btnEliminar${productoAgregar.id}`)
+
+  btnEliminar.addEventListener('click', ()=>{
+       //libreria
+      if(productoAgregar.cantidad == 1){
+          Swal.fire({
+              title: 'Estas seguro/a?',
+              text: "Este articulo se removera de tu carrito!",
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              cancelButtonText: 'cancelar',
+              confirmButtonText: 'Sí, remover!'
+            }).then((result) => {
+              if (result.isConfirmed) {
+                 
+                Swal.fire(
+                  'Removido!',
+                  'El articulo ha sido removido del articulo.',
+                  'success'
+                )
+              }else(result.notConfirmed)
+            })
+          btnEliminar.parentElement.remove();    
+          carritoCompras = carritoCompras.filter(item => item.id != productoAgregar.id);
+          actualizarCarrito();
+          localStorage.setItem('carrito', JSON.stringify(carritoCompras));
+          //operador avanzado
+          carritoCompras.length === 0 && document.getElementById('botoncito').setAttribute('disabled',true);              
+          actualizarCarrito();
+         
+              
+              
+            
+      }else{
+          Swal.fire({
+              title: 'Estas seguro/a?',
+              text: "Este articulo se removera de tu carrito!",
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Sí, remover!'
+            }).then((result) => {
+              if (result.isConfirmed) {
+                Swal.fire(
+                  'Removido!',
+                  'El articulo ha sido removido del articulo.',
+                  'success'
+                )
+              }else(result.notConfirmed)
+            })
+          productoAgregar.cantidad = productoAgregar.cantidad - 1;
+          document.getElementById(`cantidad${productoAgregar.id}`).innerHTML = `<p id="cantidad${productoAgregar.id}">Cantidad: ${productoAgregar.cantidad}</p>`
+          actualizarCarrito();
+          localStorage.setItem('carrito', JSON.stringify(carritoCompras))
+          //operador avanzado
+          carritoCompras === 0 && document.getElementById('botoncito').setAttribute('disabled',true);
+
+            actualizarCarrito();
+            
+            
+            
+          
+      }
+      
+  })
 }
 
 //actualizar carrito
@@ -187,13 +193,15 @@ function recuperar(){
     let recuperarLS = JSON.parse(localStorage.getItem('carrito')) || [];
     console.log(recuperarLS);
 
-    if(recuperarLS){
+    
         recuperarLS.forEach(element =>{
-            agregarAlCarrito(element.id);
+           mostrarCarrito(element);
+           carritoCompras.push(element)
+           actualizarCarrito()
         });
        
-    }
+    
 }
 
 recuperar();
-
+ 

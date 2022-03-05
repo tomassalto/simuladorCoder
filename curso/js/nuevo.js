@@ -2,6 +2,7 @@ let carritoCompras = [];
 
 const contenedorPlacas = document.getElementById('contenedor-productos');
 const contenedorCarrito = document.getElementById('carrito-contenedor');
+const lista = document.getElementById('lista');
 
 const contadorCarrito = document.getElementById('contador-carrito');
 const precioTotal = document.getElementById('precioTotal');
@@ -39,12 +40,12 @@ function mostrarProductos(array){
                                     <a id="botonAgregar${producto.id}" class = "btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add_shopping_cart</i></a>
                                 </div>
                                 <div class = "card-content">
-                                     ${producto.ram ? `<p id="problemas">Ram: ${producto.ram}</p>` : `<p id="problemas">Pulgada: ${producto.pulgada}</p>`}
+                                     ${producto.ram ? `<p id="problemas">Ram: ${producto.ram}</p>` : `<p id="problemas">Pulgada: ${producto.pulgada}</p>` || `<p id="problemas">Caracteristica: ${producto.caracteristica}</p>`}
                                     <p>Marca: ${producto.marca}</p>
                                     <p>$ ${producto.precio}</p>
                                 </div>
                             </div>`
-
+                            // ${producto.ram ? `<p id="problemas">Ram: ${producto.ram}</p>` : `<p id="problemas">Pulgada: ${producto.pulgada}</p>` || `<p id="problemas">Pulgada: ${producto.caracteristica}</p>`}
         
         contenedorPlacas.appendChild(div);
 
@@ -204,4 +205,22 @@ function recuperar(){
 }
 
 recuperar();
- 
+
+
+fetch('https://jsonplaceholder.typicode.com/posts/')
+  .then((response) => response.json())
+  .then((data) => {
+    console.log(data)
+
+     data.forEach(post => {
+      const li = document.createElement('li')
+      const {title,price} = post;
+
+         li.innerHTML= `<h3>${title} </h3>
+        <p>${price}</p>
+        <hr>`
+    
+      lista.append(li);
+    });
+
+  });

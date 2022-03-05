@@ -14,7 +14,8 @@ let placasStock = [
 	{id:13, name: "Monitor FULL HD 144hz", img: './imagenes/lg27144.jpg', pulgada: 27, precio: 62590, marca:'LG', cantidad: 1, clave: "m"  },
 	{id:14, name: "Monitor XG2405", img: './imagenes/viewsonic27.jpg', pulgada: 27, precio: 67200, marca:'ViewSonic', cantidad: 1, clave: "m"  },
 	{id:15, name: "Monitor 32GN500", img: './imagenes/ultragear.jpg', pulgada: 32, precio: 75830, marca:'UltraGear', cantidad: 1, clave: "m"  },
-	{id:16, name: "Monitor 4K XG3220", img: './imagenes/4kviewsonic.jpg', pulgada: 32, precio: 122000, marca:'ViewSonic', cantidad: 1, clave: "m"}
+	{id:16, name: "Monitor 4K XG3220", img: './imagenes/4kviewsonic.jpg', pulgada: 32, precio: 122000, marca:'ViewSonic', cantidad: 1, clave: "m"},
+	{id:17, name: "Auriculares Cloud Fly", img: './imagenes/imagen.jpg', marca: "Hyperx", caracteristica: "inalambricos",  precio: 15000, cantidad: 1, clave: "s"}
 
 ];
 

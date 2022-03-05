@@ -27,11 +27,18 @@ selecTipo.addEventListener('change', () =>{
 
 mostrarProductos(placasStock);
 
-function mostrarProductos(array){
+function mostrarProductos(){
     contenedorPlacas.innerHTML = "";
-    //mostrar productos en el html
-    for (const producto of array) {
-        let div = document.createElement('div');
+    //mostrar productos usando fetch 
+
+const url = "./js/datos.json"
+
+fetch(url)
+.then(respuesta => respuesta.json())
+.then(productos =>{
+
+  productos.forEach(producto =>{
+    let div = document.createElement('div');
         div.className = 'producto';
         div.innerHTML +=  `<div class = "card">
                                 <div class = "card-image">
@@ -45,33 +52,74 @@ function mostrarProductos(array){
                                     <p>$ ${producto.precio}</p>
                                 </div>
                             </div>`
-                            // ${producto.ram ? `<p id="problemas">Ram: ${producto.ram}</p>` : `<p id="problemas">Pulgada: ${producto.pulgada}</p>` || `<p id="problemas">Pulgada: ${producto.caracteristica}</p>`}
-        
-        contenedorPlacas.appendChild(div);
+                            contenedorPlacas.appendChild(div);
 
-            let btnAgregar = document.getElementById(`botonAgregar${producto.id}`);
+    let btnAgregar = document.getElementById(`botonAgregar${producto.id}`);
 
-            btnAgregar.addEventListener('click', () => {
-                   
-                Toastify({
-                    text: "Agregaste exitosamente un articulo a tu carrito!",
-                    duration: 3000,
-                    destination: "https://github.com/apvarun/toastify-js",
-                    newWindow: true,
-                    close: true,
-                    gravity: "top", // `top` or `bottom`
-                    position: "left", // `left`, `center` or `right`
-                    stopOnFocus: true, // Prevents dismissing of toast on hover
-                    style: {
-                      background: "linear-gradient(to right, #00b09b, #96c93d)",
-                    },
-                    onClick: function(){} // Callback after click
-                }).showToast();
-                
-                    agregarAlCarrito(producto.id);
+    btnAgregar.addEventListener('click', () => {
             
-            });
-     }
+        Toastify({
+            text: "Agregaste exitosamente un articulo a tu carrito!",
+            duration: 3000,
+            destination: "https://github.com/apvarun/toastify-js",
+            newWindow: true,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: "left", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+              background: "linear-gradient(to right, #00b09b, #96c93d)",
+            },
+            onClick: function(){} // Callback after click
+        }).showToast();
+        
+            agregarAlCarrito(producto.id);
+    })       
+
+  })
+    // for (const producto of array) {
+    //     let div = document.createElement('div');
+    //     div.className = 'producto';
+    //     div.innerHTML +=  `<div class = "card">
+    //                             <div class = "card-image">
+    //                                 <img src=${producto.img}>
+    //                                 <span class="card-title">${producto.name}</span>
+    //                                 <a id="botonAgregar${producto.id}" class = "btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add_shopping_cart</i></a>
+    //                             </div>
+    //                             <div class = "card-content">
+    //                                  ${producto.ram ? `<p id="problemas">Ram: ${producto.ram}</p>` : `<p id="problemas">Pulgada: ${producto.pulgada}</p>` || `<p id="problemas">Caracteristica: ${producto.caracteristica}</p>`}
+    //                                 <p>Marca: ${producto.marca}</p>
+    //                                 <p>$ ${producto.precio}</p>
+    //                             </div>
+    //                         </div>`
+    //                         // ${producto.ram ? `<p id="problemas">Ram: ${producto.ram}</p>` : `<p id="problemas">Pulgada: ${producto.pulgada}</p>` || `<p id="problemas">Pulgada: ${producto.caracteristica}</p>`}
+        
+    //     contenedorPlacas.appendChild(div);
+
+    //         let btnAgregar = document.getElementById(`botonAgregar${producto.id}`);
+
+    //         btnAgregar.addEventListener('click', () => {
+                   
+    //             Toastify({
+    //                 text: "Agregaste exitosamente un articulo a tu carrito!",
+    //                 duration: 3000,
+    //                 destination: "https://github.com/apvarun/toastify-js",
+    //                 newWindow: true,
+    //                 close: true,
+    //                 gravity: "top", // `top` or `bottom`
+    //                 position: "left", // `left`, `center` or `right`
+    //                 stopOnFocus: true, // Prevents dismissing of toast on hover
+    //                 style: {
+    //                   background: "linear-gradient(to right, #00b09b, #96c93d)",
+    //                 },
+    //                 onClick: function(){} // Callback after click
+    //             }).showToast();
+                
+    //                 agregarAlCarrito(producto.id);
+            
+    //         });
+    //  }
+})
 }
 
 function agregarAlCarrito(id){
@@ -207,20 +255,43 @@ function recuperar(){
 recuperar();
 
 
-fetch('https://jsonplaceholder.typicode.com/posts/')
-  .then((response) => response.json())
-  .then((data) => {
-    console.log(data)
+// fetch('https://api.mercadolibre.com/sites/MLA/search?q=placadevideo&limit=3')
+//   .then((response) => response.json())
+//   .then((data) => {
+//     console.log(data)
 
-     data.forEach(post => {
-      const li = document.createElement('li')
-      const {title,price} = post;
+//      data.forEach(post => {
+//       const li = document.createElement('li')
+//       const {title,price} = post;
 
-         li.innerHTML= `<h3>${title} </h3>
-        <p>${price}</p>
-        <hr>`
+//          li.innerHTML= `<h3>${title} </h3>
+//         <p>${price}</p>
+//         <hr>`
     
-      lista.append(li);
-    });
+//       lista.append(li);
+//     });
 
-  });
+//   });
+// const url = "./js/datos.json"
+// fetch(url)
+// .then(respuesta => respuesta.json())
+// .then(productos =>{
+
+//   productos.forEach(producto =>{
+//     let div = document.createElement('div');
+//         div.className = 'producto';
+//         div.innerHTML +=  `<div class = "card">
+//                                 <div class = "card-image">
+//                                     <img src=${producto.img}>
+//                                     <span class="card-title">${producto.name}</span>
+//                                     <a id="botonAgregar${producto.id}" class = "btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add_shopping_cart</i></a>
+//                                 </div>
+//                                 <div class = "card-content">
+//                                      ${producto.ram ? `<p id="problemas">Ram: ${producto.ram}</p>` : `<p id="problemas">Pulgada: ${producto.pulgada}</p>` || `<p id="problemas">Caracteristica: ${producto.caracteristica}</p>`}
+//                                     <p>Marca: ${producto.marca}</p>
+//                                     <p>$ ${producto.precio}</p>
+//                                 </div>
+//                             </div>`
+//                             contenedorPlacas.appendChild(div);
+//   })                          
+// })
